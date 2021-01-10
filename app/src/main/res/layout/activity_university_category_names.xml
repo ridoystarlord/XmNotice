@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:weightSum="5"
+    tools:context=".UniversityCategoryNamesActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/university_category_Names_toolbarid"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/colorPrimary"/>
+
+    <Button
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/university_category_name_background"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:text="General University"
+        android:id="@+id/general_university_name_btnid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/university_category_name_background"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:text="Engineering University"
+        android:id="@+id/engineering_university_name_btnid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/university_category_name_background"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:text="Agricaltural University"
+        android:id="@+id/agricaltural_university_name_btnid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/university_category_name_background"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:text="Science &amp; Technology University"
+        android:id="@+id/science_technology_university_name_btnid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/university_category_name_background"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:text="Medical University"
+        android:id="@+id/medical_university_name_btnid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
