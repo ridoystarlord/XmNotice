@@ -60,24 +60,13 @@ public class HomeAdapter extends BaseAdapter {
                 }
                 if (position==2){
 
-                    /*Float sscpoint=Float.valueOf(SharedPrefManager.getInstance(parent.getContext()).getUsersscpoint());
-                    int sscyear=Integer.valueOf(SharedPrefManager.getInstance(parent.getContext()).getUsersscyear());
-                    Float hscpoint=Float.valueOf(SharedPrefManager.getInstance(parent.getContext()).getUserhscpoint());
-                    int hscyear=Integer.valueOf(SharedPrefManager.getInstance(parent.getContext()).getUserhscyear());*/
                     Intent homeintent=new Intent(parent.getContext(),EligibilityActivity.class);
                     parent.getContext().startActivity(homeintent);
-
 
                 }
                 if (position==3){
                     Intent homeintent=new Intent(parent.getContext(),ProfileActivity.class);
                     parent.getContext().startActivity(homeintent);
-                }
-                if (position==4){
-                    Toast.makeText(parent.getContext(), home_item_list.get(position).toString(), Toast.LENGTH_SHORT).show();
-                }
-                if (position==5){
-                    Toast.makeText(parent.getContext(), home_item_list.get(position).toString(), Toast.LENGTH_SHORT).show();
                 }
 
             }

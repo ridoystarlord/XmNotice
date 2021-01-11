@@ -61,6 +61,23 @@ public class SharedPrefManager {
 
         return true;
     }
+    public boolean usersignup(String name, String phone, String sscpoint, String sscyear, String hscpoint, String hscyear, int score){
+
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(KEY_USER_PHONE, phone);
+        editor.putString(KEY_USERNAME, name);
+        editor.putString(KEY_USER_SSCPOINT, sscpoint);
+        editor.putString(KEY_USER_SSCYEAR, sscyear);
+        editor.putString(KEY_USER_HSCPOINT, hscpoint);
+        editor.putString(KEY_USER_HSCYEAR, hscyear);
+        editor.putInt(KEY_USER_SCORE, score);
+
+        editor.apply();
+
+        return true;
+    }
 
     public boolean isLoggedIn(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);

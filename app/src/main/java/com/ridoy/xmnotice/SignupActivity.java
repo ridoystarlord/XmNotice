@@ -163,6 +163,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                    
                     if (jsonObject.getString("message").equals("0")){
                         Toast.makeText(SignupActivity.this, "This Phone number is already exists", Toast.LENGTH_SHORT).show();
 
@@ -173,6 +174,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     else {
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
+                    SharedPrefManager.getInstance(getApplicationContext()).usersignup(name,phone,sscpoint,sscyear,hscpoint,hscyear,0);
                     }
 
                 } catch (JSONException e) {

@@ -34,20 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(home_toolbar);
         getSupportActionBar().setTitle("Xm Notice");
 
-        if(SharedPrefManager.getInstance(this).isLoggedIn()){
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-            return;
-        }
-
         homelist=new ArrayList<>();
 
         homelist.add("Admission Notice");
         homelist.add("Play Quiz");
         homelist.add("Check Eligibility");
         homelist.add("My Account");
-        homelist.add("Give Feedback");
-        homelist.add("Share");
+
         homegridView=findViewById(R.id.homegridviewid);
 
         HomeAdapter homeAdapter=new HomeAdapter(homelist);
