@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,19 +12,27 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.Toast;
+
+import com.ridoy.xmnotice.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.ibrahimsn.lib.OnItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private GridView homegridView;
     private List<String> homelist;
 
+    ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         if(!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
@@ -34,18 +43,30 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(home_toolbar);
         getSupportActionBar().setTitle("Xm Notice");
 
-        homelist=new ArrayList<>();
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content,new HomeFragment());
+        transaction.commit();
 
-        homelist.add("Admission Notice");
-        homelist.add("Play Quiz");
-        homelist.add("Check Eligibility");
-        homelist.add("My Account");
+        binding.bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public boolean onItemSelect(int i) {
+                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+                switch (i){
+                    case 0:
+                        transaction.replace(R.id.content,new HomeFragment());
+                        break;
+                    case 1:
+                        //transaction.replace(R.id.content,new DashboardFragment());
+                        break;
+                    case 2:
+                        transaction.replace(R.id.content,new ProfileFragment());
+                        break;
 
-        homegridView=findViewById(R.id.homegridviewid);
-
-        HomeAdapter homeAdapter=new HomeAdapter(homelist);
-        homegridView.setAdapter(homeAdapter);
-
+                }
+                transaction.commit();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -61,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
                 SharedPrefManager.getInstance(this).logout();
                 finish();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                break;
+            case R.id.menushareid:
+                Toast.makeText(this, "This is share", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuratingid:
+                Toast.makeText(this, "Give Us Rating", Toast.LENGTH_SHORT).show();
                 break;
 
             default:
