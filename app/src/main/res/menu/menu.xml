@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="Rating"
+        android:title="Rate Us"
         android:id="@+id/menuratingid"
         android:icon="@drawable/ic_rating"
         app:showAsAction="ifRoom"

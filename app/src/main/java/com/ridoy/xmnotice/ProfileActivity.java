@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +31,9 @@ import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private TextView userphone,Profile_username,balance,books;
-    private EditText username;
+    private EditText username,sscpoint,sscyear,hscpoint,hscyear;
+    private TextView userphone,userpoint;
+    private Button logoutbtn;
     private Menu action;
 
     @Override
@@ -47,18 +50,42 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(home_toolbar);
         getSupportActionBar().setTitle("Xm Notice");
 
-        username=findViewById(R.id.username_id);
-        userphone=findViewById(R.id.userphone_id);
-        Profile_username=findViewById(R.id.profile_usernameid);
-        balance=findViewById(R.id.balance_level);
-        books=findViewById(R.id.books_level);
+        username=findViewById(R.id.username);
+        sscpoint=findViewById(R.id.usersscpoint);
+        sscyear=findViewById(R.id.usersscyear);
+        hscpoint=findViewById(R.id.userhscpoint);
+        hscyear=findViewById(R.id.userhscyear);
+        userphone=findViewById(R.id.userphonenumber);
+        logoutbtn=findViewById(R.id.logoutbtn);
+        userpoint=findViewById(R.id.userpoint);
 
+        username.setFocusableInTouchMode(false);
+        username.setFocusable(false);
+        sscpoint.setFocusableInTouchMode(false);
+        sscpoint.setFocusable(false);
+        sscyear.setFocusableInTouchMode(false);
+        sscyear.setFocusable(false);
+        hscpoint.setFocusableInTouchMode(false);
+        hscpoint.setFocusable(false);
+        hscyear.setFocusableInTouchMode(false);
+        hscyear.setFocusable(false);
 
-        userphone.setText(SharedPrefManager.getInstance(this).getUserphone());
-        username.setText(SharedPrefManager.getInstance(this).getUsername());
-        Profile_username.setText(SharedPrefManager.getInstance(this).getUsername());
-        balance.setText(SharedPrefManager.getInstance(this).getUsersscpoint());
-        books.setText(String.valueOf(SharedPrefManager.getInstance(this).getUserhscpoint()));
+        username.setText(SharedPrefManager.getInstance(getApplicationContext()).getUsername());
+        sscpoint.setText(SharedPrefManager.getInstance(getApplicationContext()).getUsersscpoint());
+        sscyear.setText(SharedPrefManager.getInstance(getApplicationContext()).getUsersscyear());
+        hscpoint.setText(SharedPrefManager.getInstance(getApplicationContext()).getUserhscpoint());
+        hscyear.setText(SharedPrefManager.getInstance(getApplicationContext()).getUserhscyear());
+        userphone.setText(SharedPrefManager.getInstance(getApplicationContext()).getUserphone());
+        userpoint.setText(String.valueOf(SharedPrefManager.getInstance(getApplicationContext()).getUserScore()));
+
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPrefManager.getInstance(getApplicationContext()).logout();
+                finish();
+                startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+            }
+        });
 
     }
     @Override
@@ -67,7 +94,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         action=menu;
         action.findItem(R.id.menu_save).setVisible(false);
-
         return true;
     }
 
@@ -77,6 +103,15 @@ public class ProfileActivity extends AppCompatActivity {
             case R.id.menu_edit:
 
                 username.setFocusableInTouchMode(true);
+                username.setFocusable(true);
+                sscpoint.setFocusableInTouchMode(true);
+                sscpoint.setFocusable(true);
+                sscyear.setFocusableInTouchMode(true);
+                sscyear.setFocusable(true);
+                hscpoint.setFocusableInTouchMode(true);
+                hscpoint.setFocusable(true);
+                hscyear.setFocusableInTouchMode(true);
+                hscyear.setFocusable(true);
 
                 InputMethodManager inputMethodManager= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.showSoftInput(username,InputMethodManager.SHOW_IMPLICIT);
@@ -94,6 +129,14 @@ public class ProfileActivity extends AppCompatActivity {
 
                 username.setFocusableInTouchMode(false);
                 username.setFocusable(false);
+                sscpoint.setFocusableInTouchMode(false);
+                sscpoint.setFocusable(false);
+                sscyear.setFocusableInTouchMode(false);
+                sscyear.setFocusable(false);
+                hscpoint.setFocusableInTouchMode(false);
+                hscpoint.setFocusable(false);
+                hscyear.setFocusableInTouchMode(false);
+                hscyear.setFocusable(false);
 
                 break;
 
@@ -113,8 +156,6 @@ public class ProfileActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

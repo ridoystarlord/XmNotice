@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.ridoy.xmnotice.databinding.ActivityMainBinding;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
-
         Toolbar home_toolbar=findViewById(R.id.home_toolbarid);
         setSupportActionBar(home_toolbar);
         getSupportActionBar().setTitle("Xm Notice");
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         //transaction.replace(R.id.content,new DashboardFragment());
                         break;
                     case 2:
-                        transaction.replace(R.id.content,new ProfileFragment());
+                        //transaction.replace(R.id.content,new ProfileFragment());
                         break;
 
                 }
@@ -84,10 +85,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
                 break;
             case R.id.menushareid:
-                Toast.makeText(this, "This is share", Toast.LENGTH_SHORT).show();
+                try {
+                    Intent intent=new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Xm Notice");
+                    intent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
+                    startActivity(Intent.createChooser(intent,"Share With"));
+                } catch (Exception e) {
+                    Toast.makeText(this, "Unable to share this App\n"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.menuratingid:
-                Toast.makeText(this, "Give Us Rating", Toast.LENGTH_SHORT).show();
+
+                Uri uri= Uri.parse("https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
+
+                Intent i=new Intent(Intent.ACTION_VIEW,uri);
+                try {
+                    startActivity(i);
+                } catch (Exception e) {
+                    Toast.makeText(this, "Unable to share this App\n"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
             default:
