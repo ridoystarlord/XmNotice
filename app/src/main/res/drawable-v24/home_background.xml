@@ -9,12 +9,12 @@
     </item>
     <item
         android:top="-80dp"
-        android:bottom="500dp"
+        android:bottom="510dp"
         android:left="-100dp"
         android:right="-100dp"
         >
         <shape android:shape="oval">
-            <solid android:color="#1FA2FF"/>
+            <solid android:color="#4a244b"/>
         </shape>
     </item>
 

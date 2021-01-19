@@ -1,14 +1,8 @@
 package com.ridoy.xmnotice;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,49 +10,30 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+public class LeaderboardActivity extends AppCompatActivity {
 
-public class LeaderboardFragment extends Fragment {
-
-    public LeaderboardFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    public ListView listView;
+    ListView listView;
     ArrayList<User> users;
-    LeaderboardAdapter adapter;
     User listuser;
+    LeaderboardAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_leaderboard);
 
-        listView = v.findViewById(R.id.mylistview);
+        listView=findViewById(R.id.mylistview);
         users = new ArrayList<>();
-        adapter = new LeaderboardAdapter(getContext(), users);
+        adapter = new LeaderboardAdapter(this, users);
         listView.setAdapter(adapter);
         retrivedata();
-        return v;
     }
-
     public void retrivedata(){
 
         StringRequest stringRequest=new StringRequest(
@@ -83,7 +58,6 @@ public class LeaderboardFragment extends Fragment {
                                 listuser=new User(name,score);
                                 users.add(listuser);
                                 adapter.notifyDataSetChanged();
-
                             }
 
 
@@ -96,11 +70,11 @@ public class LeaderboardFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LeaderboardActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
-        MySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
+        MySingleton.getInstance(LeaderboardActivity.this).addToRequestQueue(stringRequest);
 
     }
 }

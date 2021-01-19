@@ -39,8 +39,7 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState); }
 
         private EditText username,sscpoint,sscyear,hscpoint,hscyear;
-        private TextView userphone;
-        private Button logoutbtn,edit,save;
+        private TextView userphone,userpoint;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,9 +53,8 @@ public class ProfileFragment extends Fragment {
         hscpoint=v.findViewById(R.id.userhscpoint);
         hscyear=v.findViewById(R.id.userhscyear);
         userphone=v.findViewById(R.id.userphonenumber);
-        logoutbtn=v.findViewById(R.id.logoutbtn);
-        edit=v.findViewById(R.id.editbtn);
-        save=v.findViewById(R.id.savebtn);
+        userpoint=v.findViewById(R.id.userpoint);
+
 
         username.setText(SharedPrefManager.getInstance(getContext()).getUsername());
         sscpoint.setText(SharedPrefManager.getInstance(getContext()).getUsersscpoint());
@@ -64,85 +62,20 @@ public class ProfileFragment extends Fragment {
         hscpoint.setText(SharedPrefManager.getInstance(getContext()).getUserhscpoint());
         hscyear.setText(SharedPrefManager.getInstance(getContext()).getUserhscyear());
         userphone.setText(SharedPrefManager.getInstance(getContext()).getUserphone());
+        userpoint.setText(String.valueOf(SharedPrefManager.getInstance(getContext()).getUserScore()));
 
         username.setFocusableInTouchMode(false);
         username.setFocusable(false);
-
-        logoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPrefManager.getInstance(getContext()).logout();
-                getActivity().finish();
-                startActivity(new Intent(getContext(),LoginActivity.class));
-            }
-        });
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                username.setFocusableInTouchMode(true);
-                edit.setVisibility(View.INVISIBLE);
-                save.setVisibility(View.VISIBLE);
-            }
-        });
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveeditdetails();
-                save.setVisibility(View.INVISIBLE);
-                edit.setVisibility(View.VISIBLE);
-                username.setFocusableInTouchMode(false);
-                username.setFocusable(false);
-
-            }
-        });
-
+        sscpoint.setFocusableInTouchMode(false);
+        sscpoint.setFocusable(false);
+        sscyear.setFocusableInTouchMode(false);
+        sscyear.setFocusable(false);
+        hscpoint.setFocusableInTouchMode(false);
+        hscpoint.setFocusable(false);
+        hscyear.setFocusableInTouchMode(false);
+        hscyear.setFocusable(false);
 
         return v;
-
-    }
-    private void saveeditdetails() {
-
-        final String name=username.getText().toString().trim();
-
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_SAVEUSERName, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("id", String.valueOf(SharedPrefManager.getInstance(getContext()).getUserId()));
-                params.put("name", name);
-                return params;
-            }
-        };
-        MySingleton.getInstance(getContext()).addToRequestQueue(stringRequest);
-
-        SharedPrefManager sharedPrefManager=new SharedPrefManager(getContext(),name);
-        sharedPrefManager.updateUserName();
-
-        getActivity().finish();
-        getFragmentManager().beginTransaction().detach(this).attach(this).commit();
-        //startActivity(getIntent());
 
     }
 }

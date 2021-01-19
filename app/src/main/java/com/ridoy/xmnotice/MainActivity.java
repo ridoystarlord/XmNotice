@@ -17,8 +17,7 @@ import android.widget.Toast;
 
 import com.ridoy.xmnotice.databinding.ActivityMainBinding;
 
-import java.net.URI;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
@@ -57,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
                         transaction.replace(R.id.content,new HomeFragment());
                         break;
                     case 1:
-                        //transaction.replace(R.id.content,new DashboardFragment());
+                        transaction.replace(R.id.content,new LeaderboardFragment());
+                        //startActivity(new Intent(MainActivity.this,LeaderboardActivity.class));
                         break;
                     case 2:
-                        //transaction.replace(R.id.content,new ProfileFragment());
+                        transaction.replace(R.id.content,new ProfileFragment());
                         break;
 
                 }
@@ -112,28 +112,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
+    @Override
     public void onBackPressed() {
-        AlertDialog.Builder alertdialog;
-        alertdialog=new AlertDialog.Builder(MainActivity.this);
-        alertdialog.setIcon(R.drawable.ic_alert);
-        alertdialog.setTitle("Exit");
-        alertdialog.setMessage("Do You Want to Exit");
-        alertdialog.setCancelable(false);
-
-        alertdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        alertdialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        AlertDialog alertDialog=alertdialog.create();
-        alertDialog.show();
+        super.onBackPressed();
     }
 }
