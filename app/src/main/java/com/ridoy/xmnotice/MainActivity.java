@@ -57,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         transaction.replace(R.id.content,new LeaderboardFragment());
-                        //startActivity(new Intent(MainActivity.this,LeaderboardActivity.class));
                         break;
                     case 2:
+                        transaction.replace(R.id.content,new WalletFragment());
+                        break;
+                    case 3:
                         transaction.replace(R.id.content,new ProfileFragment());
                         break;
 
@@ -116,6 +118,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
+        AlertDialog.Builder alertdialog;
+        alertdialog=new AlertDialog.Builder(MainActivity.this);
+        alertdialog.setIcon(R.drawable.ic_alert);
+        alertdialog.setTitle("Exit");
+        alertdialog.setMessage("Do You Want to Exit");
+        alertdialog.setCancelable(false);
+
+        alertdialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        alertdialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog=alertdialog.create();
+        alertDialog.show();
     }
 }

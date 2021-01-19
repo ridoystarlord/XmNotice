@@ -24,7 +24,7 @@
         android:id="@+id/imageView3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/xmnotice"
         app:civ_border_width="2dp"
         app:civ_border_color="#fff"
         android:layout_marginStart="32dp"

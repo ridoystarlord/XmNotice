@@ -1,5 +1,6 @@
 package com.ridoy.xmnotice;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -45,11 +46,17 @@ public class LeaderboardFragment extends Fragment {
     ArrayList<User> users;
     LeaderboardAdapter adapter;
     User listuser;
+    ProgressDialog dialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+
+        dialog=new ProgressDialog(getContext());
+        dialog.setMessage("Loading...");
+        dialog.setCancelable(false);
+        dialog.show();
 
         listView = v.findViewById(R.id.mylistview);
         users = new ArrayList<>();
@@ -67,6 +74,7 @@ public class LeaderboardFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        dialog.dismiss();
                         users.clear();
                         try {
 
@@ -95,7 +103,7 @@ public class LeaderboardFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dialog.dismiss();
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
