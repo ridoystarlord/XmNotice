@@ -35,41 +35,41 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
-        }
-        Toolbar home_toolbar=findViewById(R.id.home_toolbarid);
-        setSupportActionBar(home_toolbar);
-        getSupportActionBar().setTitle("Xm Notice");
-
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content,new HomeFragment());
-        transaction.commit();
-
-        binding.bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public boolean onItemSelect(int i) {
-                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-                switch (i){
-                    case 0:
-                        transaction.replace(R.id.content,new HomeFragment());
-                        break;
-                    case 1:
-                        transaction.replace(R.id.content,new LeaderboardFragment());
-                        break;
-                    case 2:
-                        transaction.replace(R.id.content,new WalletFragment());
-                        break;
-                    case 3:
-                        transaction.replace(R.id.content,new ProfileFragment());
-                        break;
-
-                }
-                transaction.commit();
-                return false;
-            }
-        });
+//        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
+//            finish();
+//            startActivity(new Intent(this, LoginActivity.class));
+//        }
+//        Toolbar home_toolbar=findViewById(R.id.home_toolbarid);
+//        setSupportActionBar(home_toolbar);
+//        getSupportActionBar().setTitle("Xm Notice");
+//
+//        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.content,new HomeFragment());
+//        transaction.commit();
+//
+//        binding.bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
+//            @Override
+//            public boolean onItemSelect(int i) {
+//                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+//                switch (i){
+//                    case 0:
+//                        transaction.replace(R.id.content,new HomeFragment());
+//                        break;
+//                    case 1:
+//                        transaction.replace(R.id.content,new LeaderboardFragment());
+//                        break;
+//                    case 2:
+//                        transaction.replace(R.id.content,new WalletFragment());
+//                        break;
+//                    case 3:
+//                        transaction.replace(R.id.content,new ProfileFragment());
+//                        break;
+//
+//                }
+//                transaction.commit();
+//                return false;
+//            }
+//        });
     }
 
     @Override

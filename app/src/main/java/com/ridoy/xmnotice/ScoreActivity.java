@@ -29,11 +29,16 @@ public class ScoreActivity extends AppCompatActivity {
     private TextView score_screen_score;
     private Button btn_done;
     int finalscore;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
+        dialog=new ProgressDialog(this);
+        dialog.setMessage("Please Wait, Your Score Updating");
+        dialog.setCancelable(false);
 
         score_screen_score=findViewById(R.id.score_screen_scoreid);
         btn_done=findViewById(R.id.score_screen_buttonid);
@@ -50,15 +55,12 @@ public class ScoreActivity extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_SAVEUSERSCORE, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -68,7 +70,7 @@ public class ScoreActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        dialog.dismiss();
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }

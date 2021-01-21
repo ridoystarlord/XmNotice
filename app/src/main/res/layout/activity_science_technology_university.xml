@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/sciencetechnology_university_toolbarid"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/colorPrimary"/>
+        android:background="#4a244b"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvid"

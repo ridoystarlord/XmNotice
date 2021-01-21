@@ -101,7 +101,7 @@ public class FreeUserActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                Intent intent=new Intent(FreeUserActivity.this,SignupActivity.class);
+                Intent intent=new Intent(FreeUserActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
