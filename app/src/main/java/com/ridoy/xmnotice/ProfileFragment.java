@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment {
         hscpoint.setText(SharedPrefManager.getInstance(getContext()).getUserhscpoint());
         hscyear.setText(SharedPrefManager.getInstance(getContext()).getUserhscyear());
         userphone.setText(SharedPrefManager.getInstance(getContext()).getUserphone());
-        userpoint.setText(String.valueOf(SharedPrefManager.getInstance(getContext()).getUserScore()));
+        userpoint.setText(String.valueOf(SharedPrefManager.getInstance(getContext()).getUsercurrentScore()));
 
         username.setFocusableInTouchMode(false);
         username.setFocusable(false);

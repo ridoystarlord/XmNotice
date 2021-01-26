@@ -24,7 +24,6 @@ public class PDFViewActivity extends AppCompatActivity {
 
         Toolbar unit_toolbar=findViewById(R.id.pdfview_toolbarid);
         setSupportActionBar(unit_toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Toast.makeText(this, getIntent().getStringExtra("unit"), Toast.LENGTH_LONG).show();
@@ -59,5 +58,10 @@ public class PDFViewActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

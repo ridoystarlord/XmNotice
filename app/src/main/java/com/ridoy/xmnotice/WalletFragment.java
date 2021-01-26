@@ -40,7 +40,7 @@ public class WalletFragment extends Fragment {
         cashoutpoint=v.findViewById(R.id.cashoutpoints);
         requestbutton=v.findViewById(R.id.sentrequest);
 
-        points.setText(String.valueOf(SharedPrefManager.getInstance(getContext()).getUserScore()));
+        points.setText(String.valueOf(SharedPrefManager.getInstance(getContext()).getUsercurrentScore()));
 
 
         requestbutton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class WalletFragment extends Fragment {
                 String number=bkashnumber.getText().toString();
                 String point=points.getText().toString();
                 
-                if (SharedPrefManager.getInstance(getContext()).getUserScore()>50000){
+                if (SharedPrefManager.getInstance(getContext()).getUsercurrentScore()>50000){
 
                     Toast.makeText(getContext(), "Underdevelopment", Toast.LENGTH_SHORT).show();
                     

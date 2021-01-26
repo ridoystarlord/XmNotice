@@ -18,7 +18,9 @@ public class SharedPrefManager {
     private static final String KEY_USER_SSCYEAR = "sscyear";
     private static final String KEY_USER_HSCPOINT = "hscpoint";
     private static final String KEY_USER_HSCYEAR = "hscyear";
-    private static final String KEY_USER_SCORE = "score";
+    private static final String KEY_USER_CURRENTSCORE = "currentscore";
+    private static final String KEY_USER_TOTALSCORE = "totalscore";
+    private static final String KEY_USER_TOTALEARN = "totalearn";
 
 
     private SharedPrefManager(Context context) {
@@ -43,7 +45,7 @@ public class SharedPrefManager {
         return mInstance;
     }
 
-    public boolean userLogin(int id, String name, String phone, String sscpoint, String sscyear, String hscpoint, String hscyear, int score){
+    public boolean userLogin(int id, String name, String phone, String sscpoint, String sscyear, String hscpoint, String hscyear, int currentscore, int totalscore, int totalearn){
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -55,24 +57,28 @@ public class SharedPrefManager {
         editor.putString(KEY_USER_SSCYEAR, sscyear);
         editor.putString(KEY_USER_HSCPOINT, hscpoint);
         editor.putString(KEY_USER_HSCYEAR, hscyear);
-        editor.putInt(KEY_USER_SCORE, score);
+        editor.putInt(KEY_USER_CURRENTSCORE,currentscore );
+        editor.putInt(KEY_USER_TOTALSCORE,totalscore );
+        editor.putInt(KEY_USER_TOTALEARN,totalearn );
 
         editor.apply();
 
         return true;
     }
-    public boolean usersignup(String name, String phone, String sscpoint, String sscyear, String hscpoint, String hscyear, int score){
+    public boolean usersignup(String name, String phone, String sscpoint, String sscyear, String hscpoint, String hscyear, int currentscore, int totalscore, int totalearn){
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString(KEY_USER_PHONE, phone);
         editor.putString(KEY_USERNAME, name);
+        editor.putString(KEY_USER_PHONE, phone);
         editor.putString(KEY_USER_SSCPOINT, sscpoint);
         editor.putString(KEY_USER_SSCYEAR, sscyear);
         editor.putString(KEY_USER_HSCPOINT, hscpoint);
         editor.putString(KEY_USER_HSCYEAR, hscyear);
-        editor.putInt(KEY_USER_SCORE, score);
+        editor.putInt(KEY_USER_CURRENTSCORE, currentscore);
+        editor.putInt(KEY_USER_TOTALSCORE, totalscore);
+        editor.putInt(KEY_USER_TOTALEARN, totalearn);
 
         editor.apply();
 
@@ -127,15 +133,19 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_USER_ID, 1);
     }
-    public int getUserScore(){
+    public int getUsercurrentScore(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getInt(KEY_USER_SCORE, 0);
+        return sharedPreferences.getInt(KEY_USER_CURRENTSCORE, 0);
+    }
+    public int getUsertotalScore(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_TOTALSCORE, 0);
     }
 
     public void updateUserScore(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_USER_SCORE, score);
+        editor.putInt(KEY_USER_CURRENTSCORE, score);
 
         editor.apply();
 

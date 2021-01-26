@@ -86,7 +86,7 @@ public class LeaderboardFragment extends Fragment {
                                 JSONObject object=jsonArray.getJSONObject(i);
 
                                 String name=object.getString("name");
-                                String score=object.getString("score");
+                                String score=object.getString("currentscore");
 
                                 listuser=new User(name,score);
                                 users.add(listuser);

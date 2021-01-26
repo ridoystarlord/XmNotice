@@ -76,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
         hscpoint.setText(SharedPrefManager.getInstance(getApplicationContext()).getUserhscpoint());
         hscyear.setText(SharedPrefManager.getInstance(getApplicationContext()).getUserhscyear());
         userphone.setText(SharedPrefManager.getInstance(getApplicationContext()).getUserphone());
-        userpoint.setText(String.valueOf(SharedPrefManager.getInstance(getApplicationContext()).getUserScore()));
+        userpoint.setText(String.valueOf(SharedPrefManager.getInstance(getApplicationContext()).getUsercurrentScore()));
 
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override

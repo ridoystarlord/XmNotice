@@ -106,6 +106,150 @@ public class UnitAdapter extends RecyclerView.Adapter<UnitAdapter.viewholder> {
                             }
                         });
                     }
+                    if (name.equals("C")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("D")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("E")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("F")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("G")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("H")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("I")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                    if (name.equals("J")){
+                        myRef.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                String url=snapshot.getValue(String.class);
+                                intent.putExtra("uniturl",url);
+                                intent.putExtra("unit",name);
+                                itemView.getContext().startActivity(intent);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
 
                 }
             });

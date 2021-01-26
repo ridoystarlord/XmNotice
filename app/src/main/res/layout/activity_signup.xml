@@ -1,143 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@drawable/login_background"
+    android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/signup_toolbarid"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#4a244b"
+        android:id="@+id/signup_toolbarid"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="#4a244b">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textStyle="bold"
+            android:textColor="#ffff"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            />
+    </androidx.appcompat.widget.Toolbar>
 
-    <androidx.cardview.widget.CardView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:padding="5dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_toolbarid">
-
+        android:layout_height="match_parent"
+        android:layout_below="@+id/signup_toolbarid"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
             android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:orientation="vertical">
+            android:background="@drawable/layout_background">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/signup_circleimageviewid"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                app:civ_border_color="#000"
-                app:civ_border_width="2dp"
-                android:src="@drawable/ic_launcher_background" />
-
-            <EditText
-                android:textColor="@android:color/black"
-                android:id="@+id/signup_edittext_nameid"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/textbox"
-                android:drawableLeft="@drawable/ic_person"
-                android:drawablePadding="10dp"
-                android:drawableTint="#1FA2FF"
-                android:ems="10"
-                android:hint="Enter Your Name"
-                android:inputType="textPersonName"
-                android:padding="10dp"
-                android:textSize="14sp" />
+                android:layout_height="410dp"
+                android:orientation="vertical"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_person"
+                    android:layout_marginEnd="20dp"
+                    android:id="@+id/signup_edittext_nameid"
+                    android:layout_marginStart="20dp"
+                    android:textSize="14sp"
+                    android:drawablePadding="10dp"
+                    android:hint="NAME"
+                    android:padding="20dp"
+                    android:textColorHint="#606060"
+                    android:inputType="textPersonName"/>
 
-            <EditText
-                android:textColor="@android:color/black"
-                android:id="@+id/signup_edittext_sscpointid"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/textbox"
-                android:drawableLeft="@drawable/degrees"
-                android:drawablePadding="10dp"
-                android:drawableTint="#1FA2FF"
-                android:ems="10"
-                android:hint="Enter Your SSC Point"
-                android:inputType="numberDecimal"
-                android:padding="10dp"
-                android:textSize="14sp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:id="@+id/signup_edittext_phoneid"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:hint="MOBILE NUMBER"
+                    android:padding="20dp"
+                    android:textSize="14sp"
+                    android:textColorHint="#606060"
+                    android:inputType="phone"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_password"
+                    android:layout_marginEnd="20dp"
+                    android:id="@+id/signup_edittext_passwordid"
+                    android:layout_marginStart="20dp"
+                    android:textSize="14sp"
+                    android:drawablePadding="10dp"
+                    android:hint="PASSWORD"
+                    android:padding="20dp"
+                    android:textColorHint="#606060"
+                    android:inputType="textPassword"/>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/signup_sscpointid"
+                        android:inputType="numberDecimal"
+                        android:textColorHint="#606060"
+                        android:textSize="14sp"
+                        android:padding="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="SSC Point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/signup_sscyeartid"
+                        android:inputType="number"
+                        android:textColorHint="#606060"
+                        android:textSize="14sp"
+                        android:padding="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text=""
+                        android:hint="SSC Year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/signup_hscpointid"
+                        android:inputType="numberDecimal"
+                        android:textColorHint="#606060"
+                        android:textSize="14sp"
+                        android:padding="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text=""
+                        android:hint="HSC Point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/signup_hscyearid"
+                        android:inputType="number"
+                        android:textColorHint="#606060"
+                        android:textSize="14sp"
+                        android:padding="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:text=""
+                        android:hint="HSC Year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
-            <EditText
-                android:textColor="@android:color/black"
-                android:id="@+id/signup_edittext_sscyearid"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/textbox"
-                android:drawableLeft="@drawable/year"
-                android:drawablePadding="10dp"
-                android:drawableTint="#1FA2FF"
-                android:ems="10"
-                android:hint="Enter Your SSC Passing Year"
-                android:inputType="number"
-                android:padding="10dp"
-                android:textSize="14sp" />
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    android:id="@+id/signupid"
+                    android:src="@drawable/ic_arrow"
+                    android:background="@drawable/button_background"/>
 
-            <EditText
-                android:textColor="@android:color/black"
-                android:id="@+id/signup_edittext_hscpointid"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/textbox"
-                android:drawableLeft="@drawable/degrees"
-                android:drawablePadding="10dp"
-                android:drawableTint="#1FA2FF"
-                android:ems="10"
-                android:hint="Enter Your HSC Point"
-                android:inputType="numberDecimal"
-                android:padding="10dp"
-                android:textSize="14sp" />
 
-            <EditText
-                android:textColor="@android:color/black"
-                android:id="@+id/signup_edittext_hscyearid"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/textbox"
-                android:drawableLeft="@drawable/year"
-                android:drawablePadding="10dp"
-                android:drawableTint="#1FA2FF"
-                android:ems="10"
-                android:hint="Enter Your HSC Passing Year"
-                android:inputType="number"
-                android:padding="10dp"
-                android:textSize="14sp" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_signup_id"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="#1FA2FF"
-                android:padding="10dp"
-                android:text="Sign Up"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Already have an Account"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/btn_signinid"
+                    android:background="@drawable/button_background"
+                    android:text="SIGN IN"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</RelativeLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+

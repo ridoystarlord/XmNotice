@@ -1,12 +1,16 @@
 package com.ridoy.xmnotice;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -65,6 +69,33 @@ public class UnitActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     unitlist.add(dataSnapshot.getValue(UnitModel.class));
                 }
+                if (unitlist.isEmpty()){
+
+                    final Intent intent=new Intent(UnitActivity.this,PDFViewActivity.class);
+                    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("PDFUrl").child(getIntent().getStringExtra("uniname"));
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            String url=snapshot.getValue(String.class);
+
+                            if (url==null){
+                                buildDialog(UnitActivity.this).show();
+                            }
+                            else {
+                                intent.putExtra("uniturl", url);
+                                intent.putExtra("unit", getIntent().getStringExtra("uniname"));
+                                startActivity(intent);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
                 adapter.notifyDataSetChanged();
                 loadingdialog.dismiss();
 
@@ -90,5 +121,23 @@ public class UnitActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+    public AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setIcon(R.drawable.ic_alert);
+        builder.setTitle("Notice");
+        builder.setMessage("Not Published Yet");
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.cancel();
+                finish();
+            }
+        });
+
+        return builder;
     }
 }

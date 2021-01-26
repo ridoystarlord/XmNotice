@@ -36,6 +36,8 @@ public class ScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
+        final int totalscore=SharedPrefManager.getInstance(this).getUsertotalScore();
+
         dialog=new ProgressDialog(this);
         dialog.setMessage("Please Wait, Your Score Updating");
         dialog.setCancelable(false);
@@ -44,7 +46,7 @@ public class ScoreActivity extends AppCompatActivity {
         btn_done=findViewById(R.id.score_screen_buttonid);
 
         int score=getIntent().getIntExtra("score",0);
-        int previoussocre=SharedPrefManager.getInstance(getApplicationContext()).getUserScore();
+        int previoussocre=SharedPrefManager.getInstance(getApplicationContext()).getUsercurrentScore();
 
         finalscore=score+previoussocre;
 
@@ -79,7 +81,8 @@ public class ScoreActivity extends AppCompatActivity {
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
                         params.put("id", String.valueOf(SharedPrefManager.getInstance(getApplicationContext()).getUserId()));
-                        params.put("score", String.valueOf(finalscore));
+                        params.put("currentscore", String.valueOf(finalscore));
+                        params.put("totalscore", String.valueOf((totalscore+finalscore)));
                         return params;
                     }
                 };
@@ -124,7 +127,7 @@ public class ScoreActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("id", String.valueOf(SharedPrefManager.getInstance(getApplicationContext()).getUserId()));
-                params.put("score", String.valueOf(finalscore));
+                params.put("currentscore", String.valueOf(finalscore));
                 return params;
             }
         };
