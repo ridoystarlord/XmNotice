@@ -129,7 +129,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
     private void startTimer() {
 
-        countDownTimer= new CountDownTimer(12000,1000) {
+        countDownTimer= new CountDownTimer(11000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -176,7 +176,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void playAnim(final View view, final int value, final int viewno) {
-        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
+        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(1000)
                 .setStartDelay(100)
                 .setInterpolator(new DecelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
