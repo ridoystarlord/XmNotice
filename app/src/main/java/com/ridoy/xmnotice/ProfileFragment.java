@@ -41,6 +41,7 @@ public class ProfileFragment extends Fragment {
         private EditText username,sscpoint,sscyear,hscpoint,hscyear;
         private TextView userphone,userpoint;
         private Button edit,save;
+        private String name,finalsscpoint,finalsscyear,finalhscpoint,finalhscyear;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +99,10 @@ public class ProfileFragment extends Fragment {
 
                 InputMethodManager inputMethodManager= (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.showSoftInput(username,InputMethodManager.SHOW_IMPLICIT);
+                inputMethodManager.showSoftInput(sscpoint,InputMethodManager.SHOW_IMPLICIT);
+                inputMethodManager.showSoftInput(sscyear,InputMethodManager.SHOW_IMPLICIT);
+                inputMethodManager.showSoftInput(hscpoint,InputMethodManager.SHOW_IMPLICIT);
+                inputMethodManager.showSoftInput(hscyear,InputMethodManager.SHOW_IMPLICIT);
 
             }
         });
@@ -130,7 +135,11 @@ public class ProfileFragment extends Fragment {
     }
     private void saveeditdetails() {
 
-        final String name=this.username.getText().toString().trim();
+        name=this.username.getText().toString().trim();
+        finalsscpoint=this.sscpoint.getText().toString().trim();
+        finalsscyear=this.sscyear.getText().toString().trim();
+        finalhscpoint=this.hscpoint.getText().toString().trim();
+        finalhscyear=this.hscyear.getText().toString().trim();
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_SAVEUSERName, new Response.Listener<String>() {
             @Override
@@ -157,12 +166,16 @@ public class ProfileFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("id", String.valueOf(SharedPrefManager.getInstance(getContext()).getUserId()));
                 params.put("name", name);
+                params.put("sscpoint", finalsscpoint);
+                params.put("sscyear", finalsscyear);
+                params.put("hscpoint", finalhscpoint);
+                params.put("hscyear", finalhscyear);
                 return params;
             }
         };
         MySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
 
-        SharedPrefManager sharedPrefManager=new SharedPrefManager(getContext(),name);
+        SharedPrefManager sharedPrefManager=new SharedPrefManager(getContext(),name,finalsscpoint,finalsscyear,finalhscpoint,finalhscyear);
         sharedPrefManager.updateUserName();
         getFragmentManager().beginTransaction().detach(this).attach(this).commit();
 

@@ -1,6 +1,7 @@
 package com.ridoy.xmnotice;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -28,15 +29,20 @@ public class ScoreActivity extends AppCompatActivity {
 
     private TextView score_screen_score;
     private Button btn_done;
-    int finalscore;
+    int finalscore,totalscore;
     ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        final int totalscore=SharedPrefManager.getInstance(this).getUsertotalScore();
+        Toolbar home_toolbar=findViewById(R.id.score_toolbar);
+        setSupportActionBar(home_toolbar);
+        getSupportActionBar().setTitle("Xm Notice");
+
+        totalscore=SharedPrefManager.getInstance(this).getUsertotalScore();
 
         dialog=new ProgressDialog(this);
         dialog.setMessage("Please Wait, Your Score Updating");
@@ -128,6 +134,7 @@ public class ScoreActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("id", String.valueOf(SharedPrefManager.getInstance(getApplicationContext()).getUserId()));
                 params.put("currentscore", String.valueOf(finalscore));
+                params.put("totalscore", String.valueOf((totalscore+finalscore)));
                 return params;
             }
         };

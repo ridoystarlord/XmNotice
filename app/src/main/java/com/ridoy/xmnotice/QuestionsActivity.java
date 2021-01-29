@@ -210,7 +210,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
                             if (viewno!=0){
 
-                                ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E99c03")));
+                                ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#1FA2FF")));
 
                             }
 

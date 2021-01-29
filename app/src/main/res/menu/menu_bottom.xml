@@ -15,6 +15,11 @@
         android:title="Wallet"
         android:icon="@drawable/ic_wallect"/>
     <item
+        android:id="@+id/reset"
+        android:title="Reset Passowrd"
+        android:iconTint="@android:color/white"
+        android:icon="@drawable/ic_password"/>
+    <item
         android:id="@+id/profile"
         android:title="Profile"
         android:iconTint="@android:color/white"

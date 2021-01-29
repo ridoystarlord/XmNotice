@@ -37,7 +37,6 @@ public class HomeFragment extends Fragment {
         homelist.add("Admission Notice");
         homelist.add("Play Quiz");
         homelist.add("Check\nEligibility");
-        homelist.add("Edit Account");
 
         HomeAdapter homeAdapter=new HomeAdapter(homelist);
         binding.homegridviewid.setAdapter(homeAdapter);

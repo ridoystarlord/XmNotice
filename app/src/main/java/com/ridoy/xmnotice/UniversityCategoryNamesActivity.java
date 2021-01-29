@@ -27,11 +27,15 @@ import java.util.List;
 public class UniversityCategoryNamesActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button general_university_name,engineering_university_name,agricaltural_university_name,science_technology_university_name,medical_university_name;
+    DatabaseReference myRef;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_university_category_names);
+
+        myRef = FirebaseDatabase.getInstance().getReference("PDFUrl").child("medical");
 
         Toolbar toolbar=findViewById(R.id.university_category_Names_toolbarid);
         setSupportActionBar(toolbar);
@@ -85,7 +89,22 @@ public class UniversityCategoryNamesActivity extends AppCompatActivity implement
 
         }
         if (v.getId()==R.id.medical_university_name_btnid){
+            Intent university_Categoty_Names_intent=new Intent(UniversityCategoryNamesActivity.this,PDFViewActivity.class);
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                    url=snapshot.getValue(String.class);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            university_Categoty_Names_intent.putExtra("uniturl",url);
+            university_Categoty_Names_intent.putExtra("unit","Medical University");
+            startActivity(university_Categoty_Names_intent);
         }
     }
 }

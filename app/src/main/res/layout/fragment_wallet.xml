@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/currentCoins"
+        android:id="@+id/score_screen_scoreid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
@@ -47,12 +47,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="50.000 coins required to withdraw"
+        android:text="1000 coins required to withdraw"
         android:textColor="@android:color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/currentCoins"
-        app:layout_constraintStart_toStartOf="@+id/currentCoins"
-        app:layout_constraintTop_toBottomOf="@+id/currentCoins" />
+        app:layout_constraintEnd_toEndOf="@+id/score_screen_scoreid"
+        app:layout_constraintStart_toStartOf="@+id/score_screen_scoreid"
+        app:layout_constraintTop_toBottomOf="@+id/score_screen_scoreid" />
 
     <EditText
         android:id="@+id/bkashnumberbox"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bkashnumberbox" />
 
     <Button
-        android:id="@+id/sentrequest"
+        android:id="@+id/reset_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

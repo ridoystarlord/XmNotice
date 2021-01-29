@@ -8,7 +8,7 @@ public class SharedPrefManager {
     private static SharedPrefManager mInstance;
     private static Context mCtx;
     int score;
-    String name;
+    String name,sscpoint,sscyear,hscpoint,hscyear;
 
     private static final String SHARED_PREF_NAME = "mysharedpref12";
     private static final String KEY_USERNAME = "username";
@@ -22,6 +22,14 @@ public class SharedPrefManager {
     private static final String KEY_USER_TOTALSCORE = "totalscore";
     private static final String KEY_USER_TOTALEARN = "totalearn";
 
+    public SharedPrefManager(Context context,String name, String sscpoint, String sscyear, String hscpoint, String hscyear) {
+        mCtx = context;
+        this.name = name;
+        this.sscpoint = sscpoint;
+        this.sscyear = sscyear;
+        this.hscpoint = hscpoint;
+        this.hscyear = hscyear;
+    }
 
     private SharedPrefManager(Context context) {
         mCtx = context;
@@ -36,7 +44,6 @@ public class SharedPrefManager {
         mCtx = context;
         this.name=name;
     }
-
 
     public static synchronized SharedPrefManager getInstance(Context context) {
         if (mInstance == null) {
@@ -107,6 +114,7 @@ public class SharedPrefManager {
         return sharedPreferences.getString(KEY_USERNAME, null);
     }
 
+
     public String getUserphone(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_USER_PHONE, null);
@@ -154,6 +162,19 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_USERNAME, name);
+
+        editor.apply();
+
+
+    }
+    public void updateUserinformation(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_USERNAME, name);
+        editor.putString(KEY_USER_SSCPOINT, sscpoint);
+        editor.putString(KEY_USER_SSCYEAR, sscyear);
+        editor.putString(KEY_USER_HSCPOINT, hscpoint);
+        editor.putString(KEY_USER_HSCYEAR, hscyear);
 
         editor.apply();
 

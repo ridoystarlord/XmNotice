@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/pdfview_toolbarid"
-        android:background="@color/colorPrimary"/>
+        android:background="#4a244b"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

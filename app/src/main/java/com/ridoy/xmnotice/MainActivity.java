@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                         transaction.replace(R.id.content,new WalletFragment());
                         break;
                     case 3:
+                        transaction.replace(R.id.content,new PasswordResetFragment());
+                        break;
+                    case 4:
                         transaction.replace(R.id.content,new ProfileFragment());
                         break;
 
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPrefManager.getInstance(this).logout();
                 finish();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                finishAffinity();
                 break;
             case R.id.menushareid:
                 try {
